@@ -3,7 +3,7 @@
 ### 간단한 DICOM 영상 뷰어를 제작해보도록 하겠습니다.
 
 Fig 1. 프로그램 그림
-<img src="/Fig1.png"
+<img src="./Fig1.png"
 />
 
 준비물

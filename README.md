@@ -27,7 +27,7 @@ C:\pyinstaller -w -F simpledicomviewer.py
 결과는 hiddenimports로 인해 실행되지 않음.
 simpledicomviewer.spec 파일을 텍스트편집기에서 열고서
 ```
-hiddenimports=['pydicom.encoders.gdcm', 'pydicom.encoders.pylibjpeg', ''],
+hiddenimports=['pydicom.encoders.gdcm', 'pydicom.encoders.pylibjpeg'],
 ```
 수정후
 ```python

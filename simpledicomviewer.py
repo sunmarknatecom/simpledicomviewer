@@ -20,6 +20,7 @@ class DICOMViewer:
 
         self.image_index = 0
         self.images = []
+        self.photo_image = None
 
     def open_dicom(self):
         file_path = filedialog.askopenfilename(title="Select DICOM file", filetypes=(("DICOM files", "*.dcm"), ("All files", "*.*")))
@@ -31,10 +32,11 @@ class DICOMViewer:
     def load_dicom_images(self, file_path):
         try:
             dicom_data = pydicom.dcmread(file_path)
-            images= []
-            for frame in dicom_data.pixel_array:
-                images.append(frame)
-            return images
+            temp_images = dicom_data.pixel_array
+            if len(np.shape(temp_images)) != 3:
+                return [temp_images]
+            else:
+                return temp_images
         except Exception as e:
             print("Error loading DICOM file:", e)
             return []
@@ -46,10 +48,12 @@ class DICOMViewer:
 
     def show_image(self):
         if self.images:
-            image = self.convert_to_image(self.images[self.image_index])
+            if self.photo_image:
+                del self.photo_image  # Delete the previous PhotoImage object to avoid memory leak
+            self.photo_image = self.convert_to_image(self.images[self.image_index])
             self.canvas.delete("all")
-            self.canvas.config(width=image.width(), height=image.height())
-            self.canvas.create_image(0, 0, anchor=tk.NW, image=image)
+            self.canvas.config(width=self.photo_image.width(), height=self.photo_image.height())
+            self.canvas.create_image(0, 0, anchor=tk.NW, image=self.photo_image)
 
             # Remove previously created buttons
             for widget in self.frame.winfo_children():
@@ -71,12 +75,13 @@ class DICOMViewer:
         if self.images and self.image_index < len(self.images) - 1:
             self.image_index += 1
             self.show_image()
+
     def normalize(self, input):
         maxV = np.max(input)
         minV = np.min(input)
         upper_value = input - minV
         lower_value = maxV - minV
-        tempImg = upper_value/lower_value
+        tempImg = upper_value / lower_value
         tempImg = np.array(tempImg * 255, dtype=np.uint8)
         return tempImg
 

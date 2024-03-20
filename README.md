@@ -33,7 +33,7 @@ C:\pyinstaller -w -F simpledicomviewer.py --hidden-import=pydicom.encoders.gdcm 
 만일 에러가 뜨면서 hiddenimports로 인해 실행되지 않을 경우
 simpledicomviewer.spec 파일을 텍스트편집기에서 열고서
 ```
-hiddenimports=['pydicom.encoders.gdcm', 'pydicom.encoders.pylibjpeg'],
+hiddenimports=['에러가 발생한 패기지들 이름들을 열거','에러가 발생한 패기지들 이름들을 열거'],
 ```
 수정후
 ```python

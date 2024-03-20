@@ -26,7 +26,7 @@ class DICOMViewer:
         file_path = filedialog.askopenfilename(title="Select DICOM file", filetypes=(("DICOM files", "*.dcm"), ("All files", "*.*")))
         if file_path:
             self.images = self.load_dicom_images(file_path)
-            if self.images:
+            if (self.images).all():
                 self.show_image()
 
     def load_dicom_images(self, file_path):

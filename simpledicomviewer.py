@@ -7,7 +7,7 @@ import numpy as np
 class DICOMViewer:
     def __init__(self, root):
         self.root = root
-        self.root.title("DICOM Viewer")
+        self.root.title("simple DICOM Viewer")
 
         self.frame = tk.Frame(self.root)
         self.frame.pack(padx=10, pady=10)

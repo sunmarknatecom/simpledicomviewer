@@ -19,14 +19,15 @@ class DICOMViewer:
         self.button.pack(pady=5)
 
         self.image_index = 0
-        self.images = []
+        self.images = np.array([])
         self.photo_image = None
 
     def open_dicom(self):
         file_path = filedialog.askopenfilename(title="Select DICOM file", filetypes=(("DICOM files", "*.dcm"), ("All files", "*.*")))
         if file_path:
             self.images = self.load_dicom_images(file_path)
-            if (self.images).all():
+            if np.shape(self.images):
+                print("to show _images", np.shape(self.images))
                 self.show_image()
 
     def load_dicom_images(self, file_path):
@@ -34,7 +35,7 @@ class DICOMViewer:
             dicom_data = pydicom.dcmread(file_path)
             temp_images = dicom_data.pixel_array
             if len(np.shape(temp_images)) != 3:
-                return [temp_images]
+                return np.array([temp_images])
             else:
                 return temp_images
         except Exception as e:
@@ -47,7 +48,8 @@ class DICOMViewer:
         return ImageTk.PhotoImage(image)
 
     def show_image(self):
-        if self.images:
+        if np.shape(self.images):
+            print("to self.photo_image")
             if self.photo_image:
                 del self.photo_image  # Delete the previous PhotoImage object to avoid memory leak
             self.photo_image = self.convert_to_image(self.images[self.image_index])
@@ -67,12 +69,12 @@ class DICOMViewer:
             next_button.pack(side=tk.LEFT, padx=5)
 
     def show_previous_image(self):
-        if self.images and self.image_index > 0:
+        if np.shape(self.images) and self.image_index > 0:
             self.image_index -= 1
             self.show_image()
 
     def show_next_image(self):
-        if self.images and self.image_index < len(self.images) - 1:
+        if np.shape(self.images) and self.image_index < len(self.images) - 1:
             self.image_index += 1
             self.show_image()
 

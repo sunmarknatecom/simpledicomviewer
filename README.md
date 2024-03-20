@@ -23,10 +23,13 @@ C:\python simpledicomviewer.py
 
 pyinstaller로 랩핑
 ```python
-C:\pyinstaller -w -F simpledicomviewer.py
+C:\pyinstaller -w -F simpledicomviewer.py --hidden-import=pydicom.encoders.gdcm --hidden-import=pydicom.encoders.pylibjpeg
 ```
 
-결과는 hiddenimports로 인해 실행되지 않음.
+완료 후 dist폴더에서 *.exe파일 생성이 되면 실행
+
+
+만일 에러가 뜨면서 hiddenimports로 인해 실행되지 않을 경우
 simpledicomviewer.spec 파일을 텍스트편집기에서 열고서
 ```
 hiddenimports=['pydicom.encoders.gdcm', 'pydicom.encoders.pylibjpeg'],

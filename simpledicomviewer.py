@@ -19,16 +19,14 @@ class DICOMViewer:
         self.button.pack(pady=5)
 
         self.image_index = 0
-        self.images = np.array([])
+        self.images = []
         self.photo_image = None
 
     def open_dicom(self):
         file_path = filedialog.askopenfilename(title="Select DICOM file", filetypes=(("DICOM files", "*.dcm"), ("All files", "*.*")))
         if file_path:
             self.images = self.load_dicom_images(file_path)
-            if np.shape(self.images):
-                print("to show _images", np.shape(self.images))
-                self.show_image()
+            self.show_image()
 
     def load_dicom_images(self, file_path):
         try:
@@ -43,42 +41,40 @@ class DICOMViewer:
             return []
 
     def convert_to_image(self, frame):
-        tempImg = self.image_normalize(frame)
+        tempImg = self.normalize(frame)
         image = Image.fromarray(tempImg)
         return ImageTk.PhotoImage(image)
 
     def show_image(self):
-        if np.shape(self.images):
-            print("to self.photo_image")
-            if self.photo_image:
-                del self.photo_image  # Delete the previous PhotoImage object to avoid memory leak
-            self.photo_image = self.convert_to_image(self.images[self.image_index])
-            self.canvas.delete("all")
-            self.canvas.config(width=self.photo_image.width(), height=self.photo_image.height())
-            self.canvas.create_image(0, 0, anchor=tk.NW, image=self.photo_image)
+        if self.photo_image:
+            del self.photo_image  # Delete the previous PhotoImage object to avoid memory leak
+        self.photo_image = self.convert_to_image(self.images[self.image_index])
+        self.canvas.delete("all")
+        self.canvas.config(width=self.photo_image.width(), height=self.photo_image.height())
+        self.canvas.create_image(0, 0, anchor=tk.NW, image=self.photo_image)
 
-            # Remove previously created buttons
-            for widget in self.frame.winfo_children():
-                if isinstance(widget, tk.Button):
-                    widget.destroy()
+        # Remove previously created buttons
+        for widget in self.frame.winfo_children():
+            if isinstance(widget, tk.Button):
+                widget.destroy()
 
-            # Add navigation buttons
-            prev_button = tk.Button(self.frame, text="Previous", command=self.show_previous_image)
-            prev_button.pack(side=tk.LEFT, padx=5)
-            next_button = tk.Button(self.frame, text="Next", command=self.show_next_image)
-            next_button.pack(side=tk.LEFT, padx=5)
+        # Add navigation buttons
+        prev_button = tk.Button(self.frame, text="Previous", command=self.show_previous_image)
+        prev_button.pack(side=tk.LEFT, padx=5)
+        next_button = tk.Button(self.frame, text="Next", command=self.show_next_image)
+        next_button.pack(side=tk.LEFT, padx=5)
 
     def show_previous_image(self):
-        if np.shape(self.images) and self.image_index > 0:
+        if self.image_index > 0:
             self.image_index -= 1
             self.show_image()
 
     def show_next_image(self):
-        if np.shape(self.images) and self.image_index < len(self.images) - 1:
+        if self.image_index < len(self.images) - 1:
             self.image_index += 1
             self.show_image()
 
-    def image_normalize(self, input):
+    def normalize(self, input):
         maxV = np.max(input)
         minV = np.min(input)
         upper_value = input - minV

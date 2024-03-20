@@ -43,7 +43,7 @@ class DICOMViewer:
             return []
 
     def convert_to_image(self, frame):
-        tempImg = self.normalize(frame)
+        tempImg = self.image_normalize(frame)
         image = Image.fromarray(tempImg)
         return ImageTk.PhotoImage(image)
 
@@ -78,7 +78,7 @@ class DICOMViewer:
             self.image_index += 1
             self.show_image()
 
-    def normalize(self, input):
+    def image_normalize(self, input):
         maxV = np.max(input)
         minV = np.min(input)
         upper_value = input - minV

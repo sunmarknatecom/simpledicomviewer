@@ -4,8 +4,8 @@
 
 Fig 1. 프로그램 그림
 
-<img src="./fig1.png"
-/>
+<img src="./fig1.png"/>
+<img src="./fig2.png"/>
 
 준비물
 1. 미리 설치된 파이썬

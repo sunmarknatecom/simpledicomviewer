@@ -14,6 +14,7 @@ Fig 1. 프로그램 그림
 코드 작성
 1. OpenAI의 chatGPT에서 프롬프트로 코드 생성
    Prompts>
+   
    1> 파이썬으로 pydicom tkinter로 dicom image viewer를 만드는 코드를 작성해줘.
    
    2> 첫번째 코드에서 dicom파일이 여러 장의 영상을 가지고 있을 경우 하나씩 보여주는 코드를 작성해줘.

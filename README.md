@@ -10,6 +10,8 @@ Fig 1. 프로그램 그림
 준비물
 1. 미리 설치된 파이썬
 2. 파이썬 패키지: pydicom, numpy, pyinstaller
+   
+  (만일 설치되지 않으면 pip로 설치, 이후 설명)
 
 코드 작성
 1. OpenAI의 chatGPT에서 프롬프트로 코드 생성

@@ -29,7 +29,7 @@ Fig 1. 프로그램 그림
 쉘에서 실행 기준
 파이썬 패키지 설치
 ```python
-C:\pip install pydicom numpy pyinstaller
+C:\pip install pydicom numpy pyinstaller pillow
 ```
 
 코드를 실행해보고 결과 확인

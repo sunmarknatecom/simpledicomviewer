@@ -37,6 +37,8 @@ C:\pip install pydicom numpy pyinstaller pillow
 C:\python simpledicomviewer.py
 ```
 
+!!! 가상환경에서 pyinstaller의 실행 후 에러가 발생
+
 pyinstaller로 랩핑
 ```python
 C:\pyinstaller -w -F simpledicomviewer.py --hidden-import=pydicom.encoders.gdcm --hidden-import=pydicom.encoders.pylibjpeg

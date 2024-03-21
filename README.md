@@ -11,6 +11,12 @@ Fig 1. 프로그램 그림
 1. 미리 설치된 파이썬
 2. 파이썬 패키지: pydicom, numpy, pyinstaller
 
+코드 작성
+1. OpenAI의 chatGPT에서 프롬프트로 코드 생성
+2. 원하는 기능들을 추가 수정하여 코드 완성
+
+<img src="./renewal.png"/>
+
 쉘에서 실행 기준
 파이썬 패키지 설치
 ```python

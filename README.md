@@ -55,15 +55,21 @@ C:\pyinstaller -w -F sdv002.py --hidden-import=pydicom.encoders.gdcm --hidden-im
 
 완료 후 dist폴더에서 *.exe파일 생성이 되면 실행
 
+에러발생이 없으면 여기서 완성
 
-만일 에러가 뜨면서 hiddenimports로 인해 실행되지 않을 경우
-simpledicomviewer.spec 파일을 텍스트편집기에서 열고서
+실행파일은 dist 폴더에 생성됨
+
+실행 시 바이러스 검색에서 필터링이 되면 백신프로그램 실시간 감시를 끄고서 실행하고 실행
+
+
+만일 hiddenimports 에러로 인해 실행되지 않을 경우
+sdv002.spec 파일을 텍스트편집기에서 열고서
 ```
 hiddenimports=['에러가 발생한 패기지들 이름들을 열거','에러가 발생한 패기지들 이름들을 열거'],
 ```
 수정후
 ```python
-C:\pyinstaller simpledicomviewer.spec
+C:\pyinstaller sdv002.spec
 ```
 
 완성

@@ -32,6 +32,9 @@ Fig 1. 프로그램 그림
 
 쉘에서 실행 기준
 파이썬 패키지 설치
+
+실행 폴더는 각자 원하는 폴더로 설정 후 명령어만 입력
+
 ```python
 C:\pip install pydicom numpy pyinstaller pillow
 ```

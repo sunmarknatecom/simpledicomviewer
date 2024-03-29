@@ -35,6 +35,8 @@ Fig 1. 프로그램 그림
 
 실행 폴더는 각자 원하는 폴더로 설정 후 명령어만 입력
 
+쉘을 실행시키는 방법은 윈도 명령줄의 검색 창에 cmd를 입력 후 관리자 권한으로 실행
+
 ```python
 C:\pip install pydicom numpy pyinstaller pillow
 ```

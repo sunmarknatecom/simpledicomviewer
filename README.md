@@ -63,7 +63,7 @@ C:\pyinstaller -w -F sdv002.py --hidden-import=pydicom.encoders.gdcm --hidden-im
 
 실행파일은 dist 폴더에 생성됨
 
-실행 시 바이러스 검색에서 필터링이 되면 백신프로그램 실시간 감시를 끄고서 실행하고 실행
+실행 시 바이러스 검색에서 필터링이 되면 백신프로그램 실시간 감시를 끄고서 실행
 
 
 만일 hiddenimports 에러로 인해 실행되지 않을 경우

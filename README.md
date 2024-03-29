@@ -28,6 +28,8 @@ Fig 1. 프로그램 그림
 
 <img src="./renwal.png"/>
 
+완성된 코드는 sdv002.py 이므로 이를 다운로드
+
 쉘에서 실행 기준
 파이썬 패키지 설치
 ```python
@@ -36,14 +38,14 @@ C:\pip install pydicom numpy pyinstaller pillow
 
 코드를 실행해보고 결과 확인
 ```python
-C:\python simpledicomviewer.py
+C:\python sdv002.py
 ```
 
 !!! 가상환경에서 pyinstaller의 실행 후 에러가 발생
 
 pyinstaller로 랩핑
 ```python
-C:\pyinstaller -w -F simpledicomviewer.py --hidden-import=pydicom.encoders.gdcm --hidden-import=pydicom.encoders.pylibjpeg
+C:\pyinstaller -w -F sdv002.py --hidden-import=pydicom.encoders.gdcm --hidden-import=pydicom.encoders.pylibjpeg
 ```
 
 완료 후 dist폴더에서 *.exe파일 생성이 되면 실행

@@ -38,9 +38,11 @@ class SimpleDicomViewer:
         self.next_button = tk.Button(self.frame, text="NEXT", width=7, command=self.show_next_image)
         self.root.resizable(True, True)
         self.image_index = 0
+        self.image_objects = []
         self.images = []
         self.photo_image = None
-        self.var = 0
+        self.rescale_slope = 0
+        self.rescale_intercept = 0
     def open_dicom(self):
         file_path = filedialog.askopenfilename(title="Select DICOM file", filetypes=(("DICOM files", "*.dcm"), ("All files", "*.*")))
         if file_path:
@@ -104,23 +106,23 @@ class SimpleDicomViewer:
         self.images = [np.max(elem)-elem for elem in self.images]
         self.show_image()
     def show_control_HU_window(self):
-        # self.var = tk.IntVar()
+        self.resclae_slope = tk.IntVar()
         contHU_window=tk.Toplevel(self.root)
         contHU_window.title=("Control windowning of CT")
         contHU_window.geometry("300x200")
-        # scale = tk.Scale(contHU_window, variable=self.var, command=self.select, oritent="horizontal", showvalue=False, tickinterval=50, to=500, length=200)
-        # scale.pack()
+        scale = tk.Scale(contHU_window, variable=self.var, command=self.select, orient="horizontal", showvalue=True, tickinterval=50, to=100, length=200)
+        scale.pack()
         contHU_window.transient(self.root)
         contHU_window.grab_set()
         self.root.wait_window(contHU_window)
-        pass
     def select(self):
-        value = "value : "+str(tk.scale.get())
-        self.label.config(text=value)
+        self.value = "value : "+str(tk.scale.get())
+        self.label.config(text=self.value)
     def show_info_window(self):
         info_window = tk.Toplevel(self.root)
         info_window.title("Info")
-        info_window.geometry("300x200")
+        info_window.geometry("300x140")
+        info_window.resizable(False, False)
         info_label = tk.Label(info_window, text="Developer: Mark S. Hong\n\nE-mail:sunmark@nate.com")
         info_label.pack(padx=10, pady=10)
         close_button = tk.Button(info_window, text="Close", command=info_window.destroy)
@@ -128,6 +130,7 @@ class SimpleDicomViewer:
         info_window.transient(self.root)
         info_window.grab_set()
         self.root.wait_window(info_window)
+        
 
 def main():
     root = tk.Tk()

@@ -21,9 +21,13 @@ class SimpleDicomViewer:
         #---menu3---#
         self.menu3 = tk.Menu(self.menubar, tearoff=0)
         self.menu3.add_command(label="Info", command=self.show_info_window)
+        #---menu4---#
+        self.menu4 = tk.Menu(self.menubar, tearoff=0)
+        self.menu4.add_command(label="Cont HU", command=self.show_control_HU_window)
         #---menubar---#
         self.menubar.add_cascade(label="File",menu=self.menu1)
         self.menubar.add_cascade(label="Color", menu=self.menu2)
+        self.menubar.add_cascade(label="ContHU", menu=self.menu4)
         self.menubar.add_cascade(label="Help", menu=self.menu3)
         self.root.config(menu=self.menubar)
         self.frame = tk.Frame(self.root)
@@ -36,6 +40,7 @@ class SimpleDicomViewer:
         self.image_index = 0
         self.images = []
         self.photo_image = None
+        self.var = 0
     def open_dicom(self):
         file_path = filedialog.askopenfilename(title="Select DICOM file", filetypes=(("DICOM files", "*.dcm"), ("All files", "*.*")))
         if file_path:
@@ -98,6 +103,20 @@ class SimpleDicomViewer:
     def invert(self):
         self.images = [np.max(elem)-elem for elem in self.images]
         self.show_image()
+    def show_control_HU_window(self):
+        # self.var = tk.IntVar()
+        contHU_window=tk.Toplevel(self.root)
+        contHU_window.title=("Control windowning of CT")
+        contHU_window.geometry("300x200")
+        # scale = tk.Scale(contHU_window, variable=self.var, command=self.select, oritent="horizontal", showvalue=False, tickinterval=50, to=500, length=200)
+        # scale.pack()
+        contHU_window.transient(self.root)
+        contHU_window.grab_set()
+        self.root.wait_window(contHU_window)
+        pass
+    def select(self):
+        value = "value : "+str(tk.scale.get())
+        self.label.config(text=value)
     def show_info_window(self):
         info_window = tk.Toplevel(self.root)
         info_window.title("Info")

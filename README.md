@@ -75,3 +75,7 @@ C:\pyinstaller sdv002.spec
 ```
 
 완성
+
+업데이트 준비 중인 모습입니다.
+
+<img src="./updateview.png"/>

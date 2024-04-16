@@ -31,17 +31,19 @@ class SimpleDicomViewer:
         self.menubar.add_cascade(label="Help", menu=self.menu3)
         self.root.config(menu=self.menubar)
         self.frame = tk.Frame(self.root)
-        self.frame.pack(fill=tk.BOTH, expand=True)
+        self.frame.grid(row=0, column=0, columnspan=3)
         self.canvas = tk.Canvas(self.frame, bg="white", width=1024, height=1024)
-        self.canvas.pack(fill=tk.BOTH, expand=True)
+        self.canvas.grid(row=0, column=0, columnspan=3)
         #----button---#
         self.prev_button = tk.Button(self.frame, text="PREV", width=7, command=self.show_previous_image)
+        self.prev_button.grid(row=1, column=0)
         #----slider init----#
         self.slider = tk.Scale(self.frame, from_=0, to=0, orient=tk.HORIZONTAL, length=200, command=self.update_image_index)
-        self.slider.pack()
+        self.slider.grid(row=1, column=1)
         #----slider----#
         #----button----#
         self.next_button = tk.Button(self.frame, text="NEXT", width=7, command=self.show_next_image)
+        self.next_button.grid(row=1,column=2)
         #----button----#
         self.root.resizable(True, True)
         #------global variables-----#
@@ -104,12 +106,13 @@ class SimpleDicomViewer:
         self.photo_image = self.convert_to_image(temp_image)
         self.canvas.config(width=self.photo_image.width(), height=self.photo_image.height())
         self.canvas.create_image(0, 0, anchor=tk.NW, image=self.photo_image)
-        self.prev_button.pack(side=tk.LEFT, padx=5)
+        self.prev_button.grid(row=1, column=0)
         # slider part
         self.slider.config(from_=0, to=len(self.images)-1)
         self.slider.set(self.image_index)
+        self.slider.grid(row=1, column=1)
         # slider part
-        self.next_button.pack(side=tk.RIGHT, padx=5)
+        self.next_button.grid(row=1, column=2)
     def normalize(self, input):
         if np.max(input) != 0:
             maxValue = np.max(input)

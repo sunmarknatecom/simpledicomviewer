@@ -76,7 +76,7 @@ class SimpleDicomViewer:
         #----menubar----#
         self.menubar.add_cascade(label="File",menu=self.menu1)
         self.menubar.add_cascade(label="View", menu=self.menu2)
-        self.menubar.add_cascade(label="ProcWindow", menu=self.menu4)
+        self.menubar.add_cascade(label="Image", menu=self.menu4)
         self.menubar.add_cascade(label="Help", menu=self.menu3)
         self.root.config(menu=self.menubar)
         #----end of menubar----#

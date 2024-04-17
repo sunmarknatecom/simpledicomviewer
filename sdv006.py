@@ -69,7 +69,7 @@ class SimpleDicomViewer:
         self.menu2.add_command(label="Invert", command=self.invert)
         #----menu3----#
         self.menu3 = tk.Menu(self.menubar, tearoff=0)
-        self.menu3.add_command(label="Info", command=self.show_info_window)
+        self.menu3.add_command(label="About", command=self.show_info_window)
         #----menu4----#
         self.menu4 = tk.Menu(self.menubar, tearoff=0)
         self.menu4.add_command(label="Cont HU", command=self.show_control_HU_window)
@@ -140,7 +140,10 @@ class SimpleDicomViewer:
             del self.photo_image
         self.canvas.delete("all")
         temp_image = self.images[self.image_index]
-        temp_fObj = self.file_objects[self.image_index]
+        if len(self.file_objects) != 1:
+            temp_fObj = self.file_objects[self.image_index]
+        else:
+            temp_fObj = self.file_objects[0]
         if temp_fObj.Modality == "CT":
             temp_image = temp_image*temp_fObj.RescaleSlope+temp_fObj.RescaleIntercept
         self.photo_image = self.convert_to_image(temp_image)
@@ -189,14 +192,15 @@ class SimpleDicomViewer:
         self.label.config(text=value)
     def show_info_window(self):
         info_window = tk.Toplevel(self.root)
-        info_window.title("Info")
-        info_window.geometry("300x200")
+        info_window.title("About")
+        info_window.geometry("250x110")
         info_label = tk.Label(info_window, text="Developer: Mark S. Hong\n\nE-mail:sunmark@nate.com")
         info_label.pack(padx=10, pady=10)
         close_button = tk.Button(info_window, text="Close", command=info_window.destroy)
-        close_button.pack(padx=10, pady=10)
+        close_button.pack(padx=5)
         info_window.transient(self.root)
         info_window.grab_set()
+        info_window.resizable(False, False)
         self.root.wait_window(info_window)
 
 def main():

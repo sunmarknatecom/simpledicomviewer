@@ -136,7 +136,7 @@ class SimpleDicomViewer:
         self.image_index = int(value)
         self.show_image()
     def show_image(self):
-        if self.photo_image:
+        if self.photo_image == True:
             del self.photo_image
         self.canvas.delete("all")
         temp_image = self.images[self.image_index]

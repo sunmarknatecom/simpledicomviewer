@@ -8,8 +8,8 @@
 
 Fig 1. 프로그램 그림
 
-<img src="./fig1.png"/>
-<img src="./fig2.png"/>
+<img src="./image/fig1.png"/>
+<img src="./image/fig2.png"/>
 
 준비물
 1. 미리 설치된 파이썬
@@ -32,7 +32,7 @@ Fig 1. 프로그램 그림
 
 4. Naming Convention은 클래스는 UpperCamelCase를 따르고, 상수는 CAPITALIZED_WITH_UNDERSCORES, 그리고 다른 이름들은 snake_case (https://en.wikipedia.org/wiki/Naming_convention_(programming))
 
-<img src="./renwal.png"/>
+<img src="./image/renwal.png"/>
 
 완성된 코드는 sdv002.py 이므로 이를 다운로드
 

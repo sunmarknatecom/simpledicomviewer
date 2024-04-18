@@ -30,6 +30,8 @@ Fig 1. 프로그램 그림
    
 3. 원하는 기능들을 추가 수정하여 코드 완성
 
+4. Naming Convention은 클래스는 UpperCamelCase를 따르고, 상수는 CAPITALIZED_WITH_UNDERSCORES, 그리고 다른 이름들은 snake_case (https://en.wikipedia.org/wiki/Naming_convention_(programming))
+
 <img src="./renwal.png"/>
 
 완성된 코드는 sdv002.py 이므로 이를 다운로드

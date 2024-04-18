@@ -1,4 +1,4 @@
-## Simple Dicom Viewer Project
+## Simple Dicom Viewer Project (설명의 파일은 legacy폴더의 _legacy 첨명으로 변경하였습니다.)
 
 *** 참고사항: 가상환경에서 패키지를 최소화해서 설치하시면 프로그램 크기가 작습니다. 20MB근처입니다.
 

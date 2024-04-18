@@ -80,4 +80,4 @@ C:\pyinstaller sdv002.spec
 
 업데이트 준비 중인 모습입니다.
 
-<img src="./updateview.png"/>
+<img src="./image/updateview.png"/>

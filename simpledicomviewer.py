@@ -12,3 +12,9 @@ print(os.path.dirname(filename_mr))
 
 # 예제파일들을 확인
 print(os.listdir(os.path.dirname(filename_mr)))
+
+mr_object = pydicom.dcmread(filename_mr)
+ct_object = pydicom.dcmread(filename_ct)
+
+mr_image = mr_object.pixel_array
+ct_image = ct_object.pixel_array

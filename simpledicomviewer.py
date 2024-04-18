@@ -1,6 +1,7 @@
 import pydicom, os
 import numpy as np
 from pydicom.data import get_testdata_file
+from PIL import Image
 
 filename_mr = get_testdata_file("MR_small.dcm")
 filename_ct = get_testdata_file("CT_small.dcm")
@@ -30,3 +31,9 @@ print(np.shape(ct_image))
 
 print("MR_max_value", np.max(mr_image), ", ", "MR_min_value", np.min(mr_image))
 print("CT_max_value", np.max(ct_image), ", ", "CT_min_value", np.min(ct_image))
+
+mr_PIL_image = Image.fromarray(mr_image)
+mr_PIL_image.show()
+
+ct_PIL_image = Image.fromarray(ct_image)
+ct_PIL_image.show()

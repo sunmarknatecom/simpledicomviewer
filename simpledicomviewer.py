@@ -1,4 +1,5 @@
 import pydicom, os
+import numpy as np
 from pydicom.data import get_testdata_file
 
 filename_mr = get_testdata_file("MR_small.dcm")
@@ -18,3 +19,14 @@ ct_object = pydicom.dcmread(filename_ct)
 
 mr_image = mr_object.pixel_array
 ct_image = ct_object.pixel_array
+
+print(type(mr_image))
+print(type(ct_image))
+
+print(np.shape(mr_image))
+#(65,64)
+print(np.shape(ct_image))
+#(128,128)
+
+print("MR_max_value", np.max(mr_image), ", ", "MR_min_value", np.min(mr_image))
+print("CT_max_value", np.max(ct_image), ", ", "CT_min_value", np.min(ct_image))

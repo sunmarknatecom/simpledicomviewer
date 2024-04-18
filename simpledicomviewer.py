@@ -1,4 +1,4 @@
-import pydicom
+import pydicom, os
 from pydicom.data import get_testdata_file
 
 filename_mr = get_testdata_file("MR_small.dcm")

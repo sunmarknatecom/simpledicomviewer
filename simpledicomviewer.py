@@ -37,3 +37,9 @@ mr_PIL_image.show()
 
 ct_PIL_image = Image.fromarray(ct_image)
 ct_PIL_image.show()
+
+plt.imshow(mr_object, cmap='gray')
+plt.show()    # 그림3 출력 - 출력창의 오른쪽 위 X탭 클릭 후 창을 닫음
+
+plt.imshow(ct_object, cmap='gray')
+plt.show()    # 그림4 출력 - 출력창의 오른쪽 위 X탭 클릭 후 창을 닫음

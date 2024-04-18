@@ -25,4 +25,7 @@ root = tk.Tk()
 root.title("Simple DICOM Viewer")
 root.geometry("512x512+10+10")
 root.resizable(False, False)
+frame = tk.Frame(root)
+frame.pack(padx=10, pady=10)
 root.mainloop()
+

@@ -1,7 +1,7 @@
 import pydicom
 import numpy as np
 import tkinter as tk
-from PIL import Image
+from PIL import Image, ImageTk
 
 file_path = "path"
 
@@ -27,5 +27,17 @@ root.geometry("512x512+10+10")
 root.resizable(False, False)
 frame = tk.Frame(root)
 frame.pack(padx=10, pady=10)
+
+canvas = tk.Canvas(frame, bg="blue", width=512, height=512)
+# create canvas for viewing image on frame
+nor_image = normalize(temp_array[0])
+tk_image = Image.fromarray(nor_image)
+photo_image = ImageTk.PhotoImage(tk_image)
+
+canvas.config(with=photo_image.width(), height=photo_image.height())
+
+canvas.create_image(0, 0, anchor=tk.NW, image=photo_image)
+canvas.pack()
+
 root.mainloop()
 
